@@ -6,25 +6,24 @@ import io.micronaut.http.client.annotation.Client
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
 import spock.lang.Specification
-
-import java.net.http.HttpClient
+import io.micronaut.http.client.HttpClient
 
 @MicronautTest
 class HealthSpec extends Specification {
 
-//    @Inject
-//    @Client("/")
-//    HttpClient httpClient
-//
-//    void"/health endpoint is exposed"() {
-//        given:
-//        BlockingHttpClient client = httpClient.toBlocking()
-//
-//        when:
-//        client.exchange(HttpRequest.GET("/health"))
-//
-//        then:
-//        noExceptionThrown()
-//    }
+    @Inject
+    @Client("/")
+    HttpClient httpClient
+
+    void"/health endpoint is exposed"() {
+        given:
+        BlockingHttpClient client = httpClient.toBlocking()
+
+        when:
+        client.exchange(HttpRequest.GET("/health"))
+
+        then:
+        noExceptionThrown()
+    }
 
 }
