@@ -31,7 +31,7 @@ class SubscriberSpec extends Specification {
     }
 
     @Unroll("Subscriber::email must be an email address")
-    void "subscriber email is required"(String email) {
+    void "subscriber email must be a valid email"(String email) {
         given:
         Subscriber subscriber = new Subscriber("dorfman", null)
         expect:

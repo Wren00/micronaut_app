@@ -9,6 +9,7 @@ import io.micronaut.http.client.exceptions.HttpClientResponseException
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
 import spock.lang.Specification
+import spock.lang.Unroll
 
 @MicronautTest
 class SubscriberSaveControllerSpec  extends Specification {
@@ -29,5 +30,23 @@ class SubscriberSaveControllerSpec  extends Specification {
         HttpStatus.BAD_REQUEST ==  e.status
         e.response.contentType.isPresent()
         'application/problem+json' == e.response.contentType.get().toString()
+    }
+
+    @Unroll("")
+    void "POST /api/v1/subscriber with invalid email returns 400"(String email) {
+        given:
+        BlockingHttpClient client = httpClient.toBlocking()
+
+        when:
+        client.exchange(HttpRequest.POST('/api/v1/subscriber', Collections.singletonMap("email", email) ))
+
+        then:
+        HttpClientResponseException e = thrown()
+        HttpStatus.BAD_REQUEST ==  e.status
+        e.response.contentType.isPresent()
+        'application/problem+json' == e.response.contentType.get().toString()
+
+        where:
+        email << [null, '', 'dorfman']
     }
 }
