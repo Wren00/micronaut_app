@@ -2,6 +2,7 @@ package com.example.api.v1;
 
 
 import com.example.Subscriber;
+import com.example.services.SubscriberSaveService;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.annotation.Controller;
@@ -14,11 +15,18 @@ import javax.validation.constraints.NotNull;
 @Controller("/api/v1")
 public class SubscriberSaveController {
 
+    private final SubscriberSaveService subscriberSaveService;
+
+    public SubscriberSaveController(SubscriberSaveService subscriberSaveService) {
+        this.subscriberSaveService = subscriberSaveService;
+    }
+
     @Post("/subscriber")
     @Status(HttpStatus.CREATED)
 
     void save(@NonNull @NotNull @Valid Subscriber subscriber) {
 
+        subscriberSaveService.save(subscriber);
     }
 
 

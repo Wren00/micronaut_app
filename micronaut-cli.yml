@@ -3,4 +3,4 @@ defaultPackage: com.example
 testFramework: spock
 sourceLanguage: java
 buildTool: gradle
-features: [annotation-api, app-name, gradle, http-client, jackson-databind, java, java-application, logback, management, micronaut-build, netty-server, problem-json, readme, shade, spock, yaml]
+features: [annotation-api, app-name, data, data-jdbc, gradle, h2, http-client, jackson-databind, java, java-application, jdbc-hikari, logback, management, micronaut-build, netty-server, openapi, problem-json, readme, shade, spock, yaml]
