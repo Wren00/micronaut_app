@@ -11,15 +11,19 @@ import io.micronaut.scheduling.annotation.ExecuteOn;
 import static com.example.api.v1.Api.SUBSCRIBER_PATH;
 import static com.example.api.v1.Api.V1_PATH;
 
-//@Controller(V1_PATH)
-//class SubscriberCountController {
-//
-//    SubscriberCountService subscriberCountService;
-//
-//    @ExecuteOn(TaskExecutors.IO)
-//    @Get(SUBSCRIBER_PATH + "/count")
-//    @Produces(MediaType.TEXT_PLAIN)
-//    Integer count() {
-//
-//    }
-//}
+@Controller(V1_PATH)
+class SubscriberCountController {
+
+    private final SubscriberCountService subscriberCountService;
+
+    public SubscriberCountController(SubscriberCountService subscriberCountService) {
+        this.subscriberCountService = subscriberCountService;
+    }
+
+    @ExecuteOn(TaskExecutors.IO)
+    @Get(SUBSCRIBER_PATH + "/count")
+    @Produces(MediaType.TEXT_PLAIN)
+    Integer count() {
+       return subscriberCountService.countConfirmedSubscribers();
+    }
+}

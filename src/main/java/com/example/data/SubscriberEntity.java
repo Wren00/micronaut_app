@@ -20,16 +20,19 @@ public class SubscriberEntity {
     @NotBlank
     private final String email;
 
+    private final boolean confirmed;
+
     @Nullable
     private final String name;
 
-    public SubscriberEntity(@NonNull String id, @NonNull String email, @Nullable String name) {
+    public SubscriberEntity(@NonNull String id, @NonNull String email, @Nullable String name, @NonNull boolean confirmed) {
         this.id = id;
         this.email = email;
         this.name = name;
+        this.confirmed = confirmed;
     }
 
-    @NonNull
+        @NonNull
     public String getId() {
         return id;
     }
@@ -43,4 +46,9 @@ public class SubscriberEntity {
     public String getName() {
         return name;
     }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
 }

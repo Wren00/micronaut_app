@@ -5,5 +5,4 @@ public interface SubscriberCountService {
     Integer countConfirmedSubscribers();
 
 
-
 }

@@ -24,7 +24,7 @@ public class SubscriberSaveServiceImpl implements SubscriberSaveService {
     @Override
     public Optional<String> save(@NonNull @NotNull @Valid Subscriber subscriber) {
         return idGenerator.generate().map(id -> {
-            SubscriberEntity entity = new SubscriberEntity(id, subscriber.getEmail(), subscriber.getName());
+            SubscriberEntity entity = new SubscriberEntity(id, subscriber.getEmail(), subscriber.getName(), false);
             subscriberDataRepository.save(entity);
             return id;
         });
