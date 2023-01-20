@@ -12,7 +12,10 @@ import io.micronaut.http.annotation.Status;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-@Controller("/api/v1")
+import static com.example.api.v1.Api.SUBSCRIBER_PATH;
+import static com.example.api.v1.Api.V1_PATH;
+
+@Controller(V1_PATH)
 public class SubscriberSaveController {
 
     private final SubscriberSaveService subscriberSaveService;
@@ -21,7 +24,7 @@ public class SubscriberSaveController {
         this.subscriberSaveService = subscriberSaveService;
     }
 
-    @Post("/subscriber")
+    @Post(SUBSCRIBER_PATH)
     @Status(HttpStatus.CREATED)
 
     void save(@NonNull @NotNull @Valid Subscriber subscriber) {
